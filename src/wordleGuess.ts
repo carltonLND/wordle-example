@@ -5,6 +5,10 @@ interface MarkedGuess {
   marks: Mark[];
 }
 
+interface LetterOccurences {
+  [letter: string]: number;
+}
+
 export function markWordleGuess(
   guess: string,
   hiddenTarget: string
@@ -52,8 +56,8 @@ function getMark(letter: string, index: number, target: string): Mark {
   return result;
 }
 
-function countOccurences(word: string): { [letter: string]: number } {
-  const result: { [letter: string]: number } = {};
+function countOccurences(word: string): LetterOccurences {
+  const result: LetterOccurences = {};
   for (const letter of word) {
     if (!(letter in result)) {
       result[letter] = 0;
